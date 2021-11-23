@@ -34,7 +34,6 @@ namespace fleet{
         int num_fleet;
         double price{}; //цена всегда одинаковая
         int *arr_fleet;
-        char *data;
     };
     class cruiser: public fleet{ //тип крейсер
     public:
@@ -47,12 +46,12 @@ namespace fleet{
     private:
         int type = 2; //авианосец
         double health = 300;
-        static constexpr char name[] = "Cruiser";
+        static constexpr char name[] = "Aircraft carrier";
     };
     class aircarr_cruiser: public aircarr, cruiser{
     private:
         int type = 3;//авианесущий крейсер
         double health = 400;
-        static constexpr char name[] = "Cruiser";
+        static constexpr char name[] = "Cruiser carrier";
     };
 }
