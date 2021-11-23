@@ -2,22 +2,26 @@
 #include <iostream>
 
 namespace fleet{
-    class fleet{ //объекты класса флот - объекты типа корабль
+    class fleet{ //объекты класса флот - объекты типа корабль или истребитель
     public:
         fleet();
         fleet(num){num = 0};
-        void damage(const int damage){
-            for (i = 0; i < damage; i++){
-                num = num - 1;
-                if num = 0 return *this;
-            }
+        void damage(const int damage){ //вызывается при потери флота
+            if num = 0 return *this;
+            num = num - damage;
             return *this;
         }
-        void add(const int diggs){
-            for (i = 0; i < diggs; i++){
-                num = num + 1;
-            }
+        void add(const int diggs){ //вызывается при покупке флота
+            num = num +digs;
             return *this;
+        }
+        arr(int num){
+            arr_fleet = new int[num_fleet];
+            num_fleet = num;
+        }
+        ~arr(){
+            delete[] arr_fleet;
+            arr_fleet = nullptr;
         }
         int get_num(){
             return num_fleet;
@@ -27,22 +31,19 @@ namespace fleet{
         }
     private:
         int num_fleet;
+        double price; //цена всегда одинаковая
+        int *arr_fleet;
+        int bool info = -1; //тип флота определяется классом-потомком
+        double health; //здоровье корабля может меняться
+        char *data;
     };
 
-    class ship: public fleet{ //тип корабль
-    public:
-        ship();
-        
-
-    private:
-    };
-
-    class cruiser: public ship{ //тип крейсер
+    class cruiser: public fleet{ //тип крейсер
     public:
 
     };
 
-    class aircarr: public ship{ //тип авианосец
+    class aircarr: public fleet{ //тип авианосец
 
     };
 
