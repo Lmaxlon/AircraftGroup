@@ -32,14 +32,15 @@ namespace fleet{
         }
     protected:
         int num_fleet; //количество флота
-        double price{}; //цена всегда одинаковая
+        double price; //цена всегда одинаковая
         int *arr_fleet; //массв из флота
         static const char *weapon_type; //тип вооружения (легкое/тяжелое)
     };
     class cruiser: public fleet{ //тип крейсер
     public:
         explicit cruiser(const int num) : fleet(num) {
-            weapon_type = "Light";//тяжелое
+            weapon_type = "Light/Heavy";//легкое/тяжелое вооружение
+            price = 10;
         }
     private:
         int type = 1;//крейсер
@@ -49,7 +50,8 @@ namespace fleet{
     class aircarr: public fleet{ //тип авианосец
     public:
         explicit aircarr(const int num) : fleet(num){
-            weapon_type = "Heavy";//легкое
+            weapon_type = "None";
+            price = 20;
         }
     private:
         int type = 2; //авианосец
@@ -57,9 +59,17 @@ namespace fleet{
         static constexpr char name[] = "Aircraft carrier";
     };
     class aircarr_cruiser: public aircarr, cruiser{
+    public:
+        explicit aircarr_cruiser(const int num1, const int num) : cruiser(num1), aircarr(num) {
+            weapon_type = "Light";
+            cruiser::price = 30;
+        }
     private:
         int type = 3;//авианесущий крейсер
         double health = 400;
         static constexpr char name[] = "Cruiser carrier";
+    };
+    class container{
+
     };
 }

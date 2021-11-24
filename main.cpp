@@ -1,5 +1,6 @@
 #include <iostream>
 #include "fleet.h"
+#include "dialog.h"
 
 int main() {
     std::cout << "The program was started..." << std::endl;
