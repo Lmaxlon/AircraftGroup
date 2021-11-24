@@ -30,19 +30,27 @@ namespace fleet{
         void set_num(int num){
             num_fleet = num;
         }
-    private:
-        int num_fleet;
+    protected:
+        int num_fleet; //количество флота
         double price{}; //цена всегда одинаковая
-        int *arr_fleet;
+        int *arr_fleet; //массв из флота
+        static const char *weapon_type; //тип вооружения (легкое/тяжелое)
     };
     class cruiser: public fleet{ //тип крейсер
     public:
+        explicit cruiser(const int num) : fleet(num) {
+            weapon_type = "Light";//тяжелое
+        }
     private:
         int type = 1;//крейсер
         double health = 200;
         static constexpr char name[] = "Cruiser";
     };
     class aircarr: public fleet{ //тип авианосец
+    public:
+        explicit aircarr(const int num) : fleet(num){
+            weapon_type = "Heavy";//легкое
+        }
     private:
         int type = 2; //авианосец
         double health = 300;
