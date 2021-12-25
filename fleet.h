@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <vector>
 
 namespace fleet{
     class fleet{ //объекты класса флот - объекты типа корабль или истребитель
@@ -30,23 +31,27 @@ namespace fleet{
         void set_num(int num){
             num_fleet = num;
         }
-    protected:
+    private:
         int num_fleet; //количество флота
         double price; //цена всегда одинаковая
         int *arr_fleet; //массв из флота
         static const char *weapon_type; //тип вооружения (легкое/тяжелое)
     };
+
     class cruiser: public fleet{ //тип крейсер
     public:
+        friend class iterator;
+        typedef cruiser iterator;
         explicit cruiser(const int num) : fleet(num) {
             weapon_type = "Light/Heavy";//легкое/тяжелое вооружение
             price = 10;
         }
     private:
-        int type = 1;//крейсер
-        double health = 200;
+        static const int type = 1;//крейсер
+        static constexpr double health = 200;
         static constexpr char name[] = "Cruiser";
     };
+
     class aircarr: public fleet{ //тип авианосец
     public:
         explicit aircarr(const int num) : fleet(num){
@@ -54,10 +59,11 @@ namespace fleet{
             price = 20;
         }
     private:
-        int type = 2; //авианосец
-        double health = 300;
+        static const int type = 2; //авианосец
+        constexpr static double health = 300;
         static constexpr char name[] = "Aircraft carrier";
     };
+
     class aircarr_cruiser: public aircarr, cruiser{
     public:
         explicit aircarr_cruiser(const int num1, const int num) : cruiser(num1), aircarr(num) {
@@ -69,7 +75,15 @@ namespace fleet{
         double health = 400;
         static constexpr char name[] = "Cruiser carrier";
     };
+    class iterator{
+    public:
+    };
     class container{
+    public:
+        std::vector <fleet*> array;
+    private:
+        container add(int n){
 
+        }
     };
 }
