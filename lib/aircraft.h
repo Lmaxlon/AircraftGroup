@@ -80,7 +80,7 @@ namespace air
 	};
 
 
-	class Cruiser : public Ship
+	class Cruiser : public Ship//крейсер
 	{
 	public:
 		explicit Cruiser():Ship() {};
@@ -99,7 +99,7 @@ namespace air
 		
 	};
 
-	class Carrier : public Ship
+	class Carrier : public Ship//авианосец
 	{
 	protected:
 		std::vector<Plane*> deck;
@@ -108,6 +108,11 @@ namespace air
 		explicit Carrier(int _health, int _speed, int _cost):Ship(_health, _speed, _cost) { type = "Carrier";};
 	};
 
+	/*class CarrierCruiser: public Carrier, Cruiser{
+	public:
+	    explicit Cruiser():Ship() {};
+	    explicit Cruiser(air::Weapon w, int _health, int _speed, int _cost):Ship(w, _health, _speed, _cost) { type = "CarrierCruiser";};
+	};*/
 
 	class Main
 	{
