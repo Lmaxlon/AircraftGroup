@@ -118,7 +118,9 @@ namespace air
 	{
 	public:
 		std::vector<Ship*> v;
-		Main& add(std::string type, int _health, int _speed, int _cost, air::Weapon w);
+		std::vector<Weapon*> w;
+		Main& add_wep(std::string t, int d, int r);
+		Main& add(std::string type, int _health, int _speed, int _cost, air::Weapon w); //вооруженный крейсер/авианосец/авианесущий крейсер
 		friend const std::ostream& operator<< (std::ostream &out, const Main &t);
 	};
 }
