@@ -118,7 +118,7 @@ namespace air
 	{
 	public:
 		std::vector<Ship*> v;
-		Main& add(std::string type, int _health, int _speed, int _cost);
+		Main& add(std::string type, int _health, int _speed, int _cost, air::Weapon w);
 		friend const std::ostream& operator<< (std::ostream &out, const Main &t);
 	};
 }
