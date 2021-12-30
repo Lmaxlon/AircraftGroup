@@ -12,7 +12,6 @@
 
 namespace air
 {
-
 	class Weapon
 	{
 	private:

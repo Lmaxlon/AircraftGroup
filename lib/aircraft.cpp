@@ -19,5 +19,8 @@ namespace air
 		}
 		return out;
 	}
+	shop(){
+
+	}
 }
 
