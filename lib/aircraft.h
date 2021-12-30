@@ -1,5 +1,4 @@
-#ifndef AIRCRAFT_H
-#define AIRCRAFT_H
+#pragma once
 
 
 #include <iostream>
@@ -7,7 +6,7 @@
 #include <cstring>
 #include <stdio.h>
 #include <ctime>
-#include <vector>
+#include "vector.h"
 
 
 namespace air
@@ -37,7 +36,7 @@ namespace air
 	public:
 		explicit Person(): fio("Test"), level("Officer") {};
 		explicit Person(std::string _fio, std::string lvl): fio(_fio), level(lvl) {};
-		~Person();
+		//~Person();
 		std::string get_fio() {return fio;}
 		std::string get_level() {return level;}
 	};
@@ -63,7 +62,7 @@ namespace air
 		explicit Ship() {};
 		explicit Ship(air::Weapon w, int _health, int _speed, int _cost): weapon(w), health(_health), speed(_speed), cost(_cost) {};
 		explicit Ship(int _health, int _speed, int _cost): health(_health), speed(_speed), cost(_cost) {};
-		~Ship();
+		//~Ship();
 
 		virtual std::string get_type() {return type;}
 	protected:
@@ -80,7 +79,7 @@ namespace air
 	};
 
 
-	class Cruiser : public Ship//крейсер
+	class Cruiser : public Ship
 	{
 	public:
 		explicit Cruiser():Ship() {};
@@ -95,35 +94,37 @@ namespace air
 
 	public:
 		Plane();
-		~Plane();
+		//~Plane();
 		
 	};
 
-	class Carrier : public Ship//авианосец
+	class Carrier : public Ship
 	{
 	protected:
-		std::vector<Plane*> deck;
+	    new_vector<Plane*> deck;
 	public:
+	    ~Carrier()
+	    {
+	        for (int i(0); i<deck.size(); i++)
+	            delete[] deck[i];
+	        deck.clear();
+	    }
 		explicit Carrier():Ship() {};
 		explicit Carrier(int _health, int _speed, int _cost):Ship(_health, _speed, _cost) { type = "Carrier";};
 	};
 
-	/*class CarrierCruiser: public Carrier, Cruiser{
-	public:
-	    explicit Cruiser():Ship() {};
-	    explicit Cruiser(air::Weapon w, int _health, int _speed, int _cost):Ship(w, _health, _speed, _cost) { type = "CarrierCruiser";};
-	};*/
 
 	class Main
 	{
 	public:
-		std::vector<Ship*> v;
-		std::vector<Weapon*> w;
-		Main& add_wep(std::string t, int d, int r);
-		Main& add(std::string type, int _health, int _speed, int _cost, air::Weapon w); //вооруженный крейсер/авианосец/авианесущий крейсер
+	    new_vector<Ship*> v;
+	    ~Main()
+	    {
+	        for (int i(0); i<v.size(); i++)
+	            delete[] v[i];
+	        v.clear();
+	    }
+		Main& add(std::string type, int _health, int _speed, int _cost, air::Weapon w);
 		friend const std::ostream& operator<< (std::ostream &out, const Main &t);
 	};
 }
-
-
-#endif 
