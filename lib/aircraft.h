@@ -6,7 +6,8 @@
 #include <cstring>
 #include <stdio.h>
 #include <ctime>
-#include "vector.h"
+//#include "vector.h"
+#include <vector>
 
 
 namespace air
@@ -18,13 +19,16 @@ namespace air
 		std::string type; //по самоетам || по кораблю
 		int damage;
 		int recharge;
-
+		int size;
 	public:
 		explicit Weapon(): type("NO"), damage(0), recharge(0) {};
 		explicit Weapon(std::string t, int d, int r): type(t), damage(d), recharge(r){};
 		std::string get_type() {return type;}
 		int get_damage() {return damage;}
 		int get_recharge() {return recharge;}
+		void set_damage(double arg){ damage = arg;}
+		void set_recharge(double arg){ recharge = arg;}
+		void set_type(std::string arg){ type = arg;}
 	};
 
 
@@ -38,7 +42,9 @@ namespace air
 		explicit Person(std::string _fio, std::string lvl): fio(_fio), level(lvl) {};
 		//~Person();
 		std::string get_fio() {return fio;}
+		void set_fio(std::string arg){ fio = arg;}
 		std::string get_level() {return level;}
+		void set_level(std::string arg){ level = arg;}
 	};
 
 
@@ -51,6 +57,10 @@ namespace air
 		int y;
 		Motion(): x(0), y(0), x0(0), y0(0) {};
 		Motion(int _x, int _y, int _x0, int _y0): x(_x), y(_y), x0(_x0), y0(_x0) {};
+		void set_x0(int arg){ x0 = arg;}
+		void set_y0(int arg){ y0 = arg;}
+		void set_x(int arg){ x = arg;}
+		void set_y(int arg){ y = arg;}
 		//формуала для направления движения
 		//формула модуля
 
@@ -75,7 +85,7 @@ namespace air
 		int speed;
 		int health;
 		std::string type;
-	
+		int id;
 	};
 
 
@@ -94,14 +104,22 @@ namespace air
 
 	public:
 		Plane();
-		//~Plane();
-		
+	private:
+	    Motion move;
+	    Weapon w;
+	    int damage;
+	    std::string type;
+	    int health;
+	    int speed;
+	    int speed_of_recharge;
+	    int cost;
 	};
 
 	class Carrier : public Ship
 	{
 	protected:
-	    new_vector<Plane*> deck;
+	    //new_vector<Plane*> deck;//самолеты
+	    std::vector<Plane*> deck;
 	public:
 	    ~Carrier()
 	    {
@@ -113,11 +131,25 @@ namespace air
 		explicit Carrier(int _health, int _speed, int _cost):Ship(_health, _speed, _cost) { type = "Carrier";};
 	};
 
+	class CarrierCruiser: public Carrier{
+	public:
+	    explicit CarrierCruiser():Carrier(){};
+	    explicit CarrierCruiser(air::Weapon w, int _health, int _speed, int _cost):Carrier(_health, _speed, _cost){ type = "CarrierCruiser";}
+	    //new_vector<Plane*> deck;
+	    ~CarrierCruiser()
+	    {
+	        for (int i(0); i<deck.size(); i++)
+	            delete[] deck[i];
+	        deck.clear();
+	    }
+	};
+
 
 	class Main
 	{
 	public:
-	    new_vector<Ship*> v;
+	    //new_vector<Ship*> v;//корабли
+	    std::vector<Ship*> v;
 	    ~Main()
 	    {
 	        for (int i(0); i<v.size(); i++)
@@ -126,5 +158,6 @@ namespace air
 	    }
 		Main& add(std::string type, int _health, int _speed, int _cost, air::Weapon w);
 		friend const std::ostream& operator<< (std::ostream &out, const Main &t);
+		//Main& remove
 	};
 }
