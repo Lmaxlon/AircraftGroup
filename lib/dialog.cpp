@@ -14,7 +14,18 @@ int menu(){
 	    switch (a){
 	          case 1:{
 	                std::cout << "Начать игру!" << std::endl;
-	                shop();
+	                int m;
+	                m = air::shop();
+	                if(m == 1){
+	                std::cout << "Вы выбрали [1]!" << std::endl;
+	                air::add_ship1();
+	                //start_game();
+	                }
+	                if(m == 2){
+	                std::cout << "Вы выбрали [2]!" << std::endl;
+	                //add_ship2();
+	                //start_game();
+	                }
 	                break;
 	          }
 	          case 2:{
