@@ -8,10 +8,17 @@
 #include <ctime>
 //#include "vector.h"
 #include <vector>
-
+/**
+ @file
+ @brief Подключение библиотек
+ */
 
 namespace air
 {
+/**
+ @brief Класс для работы с вооружением
+ Объект класса вооружение является составной частью других классов
+*/
 	class Weapon
 	{
 	private:
@@ -19,15 +26,47 @@ namespace air
 		int damage;
 		int recharge;
 		int size;
+		/**
+     @brief Список параметров класса
+     @details Параметры задают наносимый урон, перезарядку и размер склада боеприпасов
+     @param damage урон
+     @param recharge перезарядка
+     @param size размер склада
+     */
 	public:
 		explicit Weapon(): type("NO"), damage(0), recharge(0) {};
+		/**
+     @brief Добавление оружия
+     @details Является конструктором класса, задает параметры по умолчанию
+     */
 		explicit Weapon(std::string t, int d, int r): type(t), damage(d), recharge(r){};
 		std::string get_type() {return type;}
+		/**
+     @brief Получение типа оружия (легкое/тяжелое)
+     @return Возвращает тип оружия
+     */
 		int get_damage() {return damage;}
+		/**
+     @brief Получение количества наносимого урона
+     @return Возвращает наносимый урон
+     */
 		int get_recharge() {return recharge;}
+		/**
+     @brief Получение перезарядки
+     @return Возвращает перезарядку
+     */
 		void set_damage(double arg){ damage = arg;}
+		/**
+     @brief Получение установка значения наносимого урона
+     */
 		void set_recharge(double arg){ recharge = arg;}
+		/**
+     @brief Установка перезарядки
+     */
 		void set_type(std::string arg){ type = arg;}
+		/**
+     @brief Установка типа с помощью ыекштп
+     */
 	};
 
 
@@ -36,14 +75,39 @@ namespace air
 	private:
 		std::string fio;
 		std::string level;
+		/**
+     @brief Список параметров для класса "Человек"
+     @param fio ФИО капитана
+     @param level звание капитана
+     */
 	public:
 		explicit Person(): fio("Test"), level("Officer") {};
+		/**
+     @brief Конструктор по умолчанию для этого класса
+     */
 		explicit Person(std::string _fio, std::string lvl): fio(_fio), level(lvl) {};
 		//~Person();
+		/**
+     @brief Конструктор класса
+     */
 		std::string get_fio() {return fio;}
+		/**
+     @brief Получение ФИО капитана
+     @return Возвращает ФИО капитана
+     */
 		void set_fio(std::string arg){ fio = arg;}
+		/**
+     @brief Устанавливает звание капитана
+     */
 		std::string get_level() {return level;}
+		/**
+     @brief Получение звания капитана
+     @return Возвращает звание капитана
+     */
 		void set_level(std::string arg){ level = arg;}
+		/**
+     @brief Установка звания капитана
+     */
 	};
 
 
@@ -54,7 +118,17 @@ namespace air
 		int y0;
 		int x;
 		int y;
+		/**
+     @brief Координаты для осуществления движения объекта классов (используется в других классах)
+     @param x0 начальная координата по x
+     @param y0 начальная координата по y
+     @param x конечная координата по x
+     @param y конечная координата по y
+     */
 		Motion(): x(0), y(0), x0(0), y0(0) {};
+		/**
+     @brief Конструктор по умолчанию для этого класса
+     */
 		Motion(int _x, int _y, int _x0, int _y0): x(_x), y(_y), x0(_x0), y0(_x0) {};
 		void set_x0(int arg){ x0 = arg;}
 		void set_y0(int arg){ y0 = arg;}
@@ -85,6 +159,18 @@ namespace air
 		int health;
 		std::string type;
 		int id;
+		/**
+     @brief Параметры любого корабля
+     @param name Название корабля
+     @param captain создание капитана
+     @param move создание движения
+     @param weapon создание оружия
+     @param cost уена
+     @param speed скорость
+     @param health живучесть
+     @param type тип корабля
+     @param id идентификационный номер корабля
+     */
 	};
 
 
