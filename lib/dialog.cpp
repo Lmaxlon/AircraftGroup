@@ -1,6 +1,6 @@
 #include "aircraft.cpp"
 #include "dialog.h"
-#include "shop.h"
+#include "shop_levels.h"
 
 int menu(){
     /*air::Main main;
@@ -9,30 +9,32 @@ int menu(){
 	int a;
 	bool While=true;
 	std::cout << "Welcome to AirCraft game!" << std:: endl;
+	std::cout << "-------------------------" << std:: endl;
 	std::cout << "Управление осуществляется с помощью клавиатуры. Выберите подходящий пункт!" << std:: endl;
 	konsole();
 	while (While){
-	std::cin >> a;
-	if (std::cin.eof()){
-	std::cout << "Конец файла." << std::endl;
-	exit(0);
-	}
-	if (std::cin.fail()) {
-      std::cin.clear();
-      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-      std::cout << "Вы ввели не число!" << std::endl;
+	while(a != 1 || a != 2){
+        a = check_input();
+        if(a == 1 || a==2 ) break;
+        std::cout << "Отсутствие соответствия диапозону 1-2," << std::endl;
+        std::cout << "повторите пожалуйста ввод." << std::endl;
     }
 	    switch (a){
 	          case 1:{
 	                std::cout << "Вы выбрали пункт [1] - игра начинается!" << std:: endl;
-	                return 1;
+	                    int error;
+                        while(true){
+                            error = start();
+                            if(error > 0 || error < 5) break;
+                            if(error == 5) break;
+                        }
+	                break;
 	          }
 	          case 2:{
-	                std::cout << "Выход." << std::endl;
+	                std::cout << "Вы выбрали пункт [2] - выход." << std::endl;
 	                return 2;
 	          }
 	    }
-	    std::cout << "Повторите пожалуйста ввод" << std::endl;
 	}
 	return 999;
 }
