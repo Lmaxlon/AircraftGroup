@@ -19,30 +19,5 @@ namespace air
 		}
 		return out;
 	}
-	int shop(){
-	int money = 1000;
-	int a;
-	std::cout << "Уровень 1: " << std::endl;
-	std::cout << "В магазине в наличии 2 корабля: " << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout <<"[1] Корабль типа Крейсер, скорость 13 миль/ч, 100 здоровья, управление осуществляет" << std::endl;
-	std::cout <<"Ковальский С., наносимый урон 10, скорость перезарядки 10, вместимость боеприпасов 50, цена 500" << std::endl;
-	std::cout << std::endl;
-    std::cout << std::endl;
-    std::cout <<"[2]Корабль типа Авианосец, скорость 13 миль/ч, 100 здоровья, управление осуществляет" << std::endl;
-    std::cout <<"Морозов А., вместимость самолетов 3, цена 500" << std::endl;
-    std::cout << std::endl;
-    std::cout << std::endl;
-    std::cout <<"Самолеты в наличии отсутствуют.." << std::endl;
-    std::cout <<"Выберете подходящие варианты!" << std::endl;
-    std::cin >> a;
-    return a;
-	}
-	void add_ship1(){
-	Main main;
-	Weapon w("NO", 10, 10);
-	main.add("Cruiser", 100, 13, 500, w);
-	}
 }
 
