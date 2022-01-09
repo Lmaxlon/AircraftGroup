@@ -1,6 +1,6 @@
 #pragma once
 #include "dialog.h"
-
+#include "aircraft.h"
 int start(){
     int a;
     bool While=true;
@@ -10,6 +10,10 @@ int start(){
         switch (a){
             case 1:{
                 std::cout << "Вы выбрали пункт [1] - Магазин" << std:: endl;
+                air::Shop shop;
+                int b;
+                b = shop.get_balance();
+                std::cout << "Ваш баланс составляет: " << b <<" монет" << std::endl;
                 return 1;
             }
             case 2:{

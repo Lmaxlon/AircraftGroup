@@ -158,4 +158,14 @@ namespace air
 		friend const std::ostream& operator<< (std::ostream &out, const Main &t);
 		//Main& remove
 	};
+
+	class Shop{
+	private:
+	    int balance;
+	public:
+	    explicit Shop(): balance(1000){};
+	    explicit Shop(int b): balance(b){};
+	    int get_balance(){ return balance;}
+	    void set_balance(int arg){ balance = arg;}
+	};
 }
