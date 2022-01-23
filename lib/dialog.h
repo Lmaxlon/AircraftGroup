@@ -17,6 +17,23 @@ void konsole2(){
     std::cout << "[4] - Уровень 3" << std::endl;
     std::cout << "[5] - Назад" << std::endl;
 }
+
+void konsole3(){
+    std::cout << "[1] - Покупка самолетов" << std::endl;
+    std::cout << "[2] - Покупка кораблей" << std::endl;
+    std::cout << "[3] - Покупка вооружения" << std::endl;
+    std::cout << "[4] - Продажа самолетов" << std::endl;
+    std::cout << "[5] - Продажа кораблей" << std::endl;
+    std::cout << "[6] - Назад" << std::endl;
+}
+
+void konsole4(){
+    std::cout << std::endl;
+    std::cout << "(Примечание: чтобы разблокировать новые вещи в магазине, пройдите " << std::endl;
+    std::cout << "следующий уровень игры. После прохождения всей игры вам будут доступны" << std::endl;
+    std::cout << "все вещи.)" << std::endl;
+}
+
 int check_input(){
     int a;
     std::cin >> a;

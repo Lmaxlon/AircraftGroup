@@ -1,3 +1,5 @@
+/*Главное меню*/
+
 #include "aircraft.cpp"
 #include "dialog.h"
 #include "shop_levels.h"
