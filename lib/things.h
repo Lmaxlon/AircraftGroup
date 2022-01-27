@@ -21,7 +21,11 @@ int start2(){
                 std::cout << "Вы выбрали пункт [1] - Покупка самолетов" << std:: endl;
                 int air = airplane();
                 if (air == 1){
+                    return 14;
                 } else if (air == 2){
+                    return 15;
+                } else if (air == 3){
+                    return 16;
                 }
                 return 1;
             }
@@ -29,13 +33,11 @@ int start2(){
                 std::cout << "Вы выбрали пункт [2] - Покупка кораблей" << std:: endl;
                 int ship = shipper();
                 if (ship == 1){
-                    air::Main main;
-                    air::Weapon w("No",50,70);
-                    main.add("Carrier", 500,3,500, w);
+                    return 11;
                 } else if (ship == 2){
-                    air::Main main;
-                    air::Weapon w("No",50,70);
-                    main.add("Carrier", 500,3,500, w);
+                    return 12;
+                } else if (ship == 3){
+                    return 13;
                 }
                 return 1;
             }

@@ -64,15 +64,18 @@ int airplane(){
     std::cout << std:: endl;
     std::cout << "[2] - Самолет Airspeed 200, здоровье 350, скорость атаки 4, скорость перезарядки 5 снаряда/сек, "<< std:: endl;
     std::cout << "цена 400, урон 40." << std:: endl;
+    std::cout << std:: endl;
+    std::cout << "[3] - Выход "<< std:: endl;
     int a;
-    while(a != 1 || a != 2){
+    while(a != 1 || a != 2 || a != 3){
         a = check_input();
-        if(a == 1 || a==2 ) break;
+        if(a == 1 || a==2 || a == 3) break;
         std::cout << "Отсутствие соответствия диапозону 1-2," << std::endl;
         std::cout << "повторите пожалуйста ввод." << std::endl;
     }
     if (a == 1) return 1;
     if (a == 2) return 2;
+    if (a == 3) return 3;
 }
 
 int shipper(){
@@ -82,14 +85,17 @@ int shipper(){
     std::cout << "цена 500, урон 40, скорость 3 миля/час." << std:: endl;
     std::cout << std:: endl;
     std::cout << "[2] - Корабль White, типа Carrier, здоровье 600, скорость перезарядки 65 снаряда/сек,"<< std:: endl;
-    std::cout << "цена 500, урон 70б скорость 5 миля/час." << std:: endl;
+    std::cout << "цена 500, урон 70, скорость 5 миля/час." << std:: endl;
+    std::cout << std:: endl;
+    std::cout << "[3] - Выход << " << std:: endl;
     int a;
-    while(a != 1 || a != 2){
+    while(a != 1 || a != 2 || a != 3){
         a = check_input();
-        if(a == 1 || a==2 ) break;
+        if(a == 1 || a==2 || a == 3) break;
         std::cout << "Отсутствие соответствия диапозону 1-2," << std::endl;
         std::cout << "повторите пожалуйста ввод." << std::endl;
     }
     if (a == 1) return 1;
     if (a == 2) return 2;
+    if (a == 3) return 3;
 }

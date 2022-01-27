@@ -27,12 +27,13 @@ int start(){
                 do{
                     std::cout << "Вы выбрали пункт [1] - Магазин" << std:: endl;
                     submenu = start2();
-                    if (submenu == 1){
+                    if (submenu == 1 || submenu == 13 || submenu == 16){
                         std::cout << "Возврат в главное меню..." << std:: endl;
                         head();
                         konsole();
                         return 1;
                     }
+                    //if (submenu == 11)
                 } while (true);
                 break;
             }
