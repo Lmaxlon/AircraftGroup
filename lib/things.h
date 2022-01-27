@@ -2,6 +2,7 @@
 
 #pragma once
 #include "dialog.h"
+#include "aircraft.cpp"
 int start2(){
     std::cout << "Выберете подходящий пункт:" << std::endl;
     konsole3();
@@ -18,23 +19,37 @@ int start2(){
         switch (a){
             case 1:{
                 std::cout << "Вы выбрали пункт [1] - Покупка самолетов" << std:: endl;
-                break;
+                int air = airplane();
+                if (air == 1){
+                } else if (air == 2){
+                }
+                return 1;
             }
             case 2:{
                 std::cout << "Вы выбрали пункт [2] - Покупка кораблей" << std:: endl;
-                break;
+                int ship = shipper();
+                if (ship == 1){
+                    air::Main main;
+                    air::Weapon w("No",50,70);
+                    main.add("Carrier", 500,3,500, w);
+                } else if (ship == 2){
+                    air::Main main;
+                    air::Weapon w("No",50,70);
+                    main.add("Carrier", 500,3,500, w);
+                }
+                return 1;
             }
             case 3:{
                 std::cout << "Вы выбрали пункт [3] - Покупка вооружения" << std:: endl;
-                break;
+                return 1;
             }
             case 4:{
                 std::cout << "Вы выбрали пункт [4] - Продажа самолетов" << std:: endl;
-                break;
+                return 1;
             }
             case 5:{
                 std::cout << "Вы выбрали пункт [5] - Продажа кораблей" << std:: endl;
-                break;
+                return 1;
             }
             case 6:{
                 std::cout << "Вы выбрали пункт [6] - Вернуться в главное меню" << std:: endl;

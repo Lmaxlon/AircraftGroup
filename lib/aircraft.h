@@ -108,9 +108,9 @@ namespace air
 	    int damage;
 	    std::string type;
 	    int health;
-	    int speed;
 	    int speed_of_recharge;
 	    int cost;
+	    int id;
 	};
 
 	class Carrier : virtual public Ship
@@ -164,9 +164,13 @@ namespace air
 	    int balance;
 	    int level;
 	public:
-	    explicit Shop(): balance(1000), level (1){};
+	    explicit Shop(): balance(1000), level (){};
 	    explicit Shop(int b, int lev): balance(b), level(lev){};
 	    int get_balance(){ return balance;}
+	    int get_level(){ return level; }
 	    void set_balance(int arg){ balance = arg;}
+	    void set_level(int arg){
+	        level = level + arg;
+	    }
 	};
 }

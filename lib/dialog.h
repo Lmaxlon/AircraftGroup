@@ -1,4 +1,5 @@
 #pragma once
+
 int menu();
 void konsole()
 {
@@ -53,4 +54,42 @@ void head(){
     std::cout << "Welcome to AirCraft game!" << std:: endl;
     std::cout << "-------------------------" << std:: endl;
     std::cout << "Управление осуществляется с помощью клавиатуры. Выберите подходящий пункт!" << std:: endl;
+}
+
+int airplane(){
+    std::cout << "Доступны следующие самолеты:" << std:: endl;
+    std::cout << "----------------------------" << std:: endl;
+    std::cout << "[1] - Самолет Adam Aircraft, здоровье 400, скорость атаки 5, скорость перезарядки 2 снаряда/сек,"<< std:: endl;
+    std::cout << "цена 500, урон 40." << std:: endl;
+    std::cout << std:: endl;
+    std::cout << "[2] - Самолет Airspeed 200, здоровье 350, скорость атаки 4, скорость перезарядки 5 снаряда/сек, "<< std:: endl;
+    std::cout << "цена 400, урон 40." << std:: endl;
+    int a;
+    while(a != 1 || a != 2){
+        a = check_input();
+        if(a == 1 || a==2 ) break;
+        std::cout << "Отсутствие соответствия диапозону 1-2," << std::endl;
+        std::cout << "повторите пожалуйста ввод." << std::endl;
+    }
+    if (a == 1) return 1;
+    if (a == 2) return 2;
+}
+
+int shipper(){
+    std::cout << "Доступны следующие корабли:" << std:: endl;
+    std::cout << "----------------------------" << std:: endl;
+    std::cout << "[1] - Корабль Black типа Carrier, здоровье 500, скорость перезарядки 70 снаряда/сек,"<< std:: endl;
+    std::cout << "цена 500, урон 40, скорость 3 миля/час." << std:: endl;
+    std::cout << std:: endl;
+    std::cout << "[2] - Корабль White, типа Carrier, здоровье 600, скорость перезарядки 65 снаряда/сек,"<< std:: endl;
+    std::cout << "цена 500, урон 70б скорость 5 миля/час." << std:: endl;
+    int a;
+    while(a != 1 || a != 2){
+        a = check_input();
+        if(a == 1 || a==2 ) break;
+        std::cout << "Отсутствие соответствия диапозону 1-2," << std::endl;
+        std::cout << "повторите пожалуйста ввод." << std::endl;
+    }
+    if (a == 1) return 1;
+    if (a == 2) return 2;
 }

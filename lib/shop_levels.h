@@ -10,6 +10,10 @@ int start(){
     int a;
     bool While=true;
     konsole2();
+    air::Shop shop;
+    int b;
+    b = shop.get_balance();
+    std::cout << "Ваш баланс составляет: " << b <<" монет" << std::endl;
     while (While){
         while (a < 1 || a > 5){
             a = check_input();
@@ -22,10 +26,6 @@ int start(){
                 int submenu = 0;
                 do{
                     std::cout << "Вы выбрали пункт [1] - Магазин" << std:: endl;
-                    air::Shop shop;
-                    int b;
-                    b = shop.get_balance();
-                    std::cout << "Ваш баланс составляет: " << b <<" монет" << std::endl;
                     submenu = start2();
                     if (submenu == 1){
                         std::cout << "Возврат в главное меню..." << std:: endl;
