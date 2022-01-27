@@ -24,7 +24,7 @@ void konsole3(){
     std::cout << "[3] - Покупка вооружения" << std::endl;
     std::cout << "[4] - Продажа самолетов" << std::endl;
     std::cout << "[5] - Продажа кораблей" << std::endl;
-    std::cout << "[6] - Назад" << std::endl;
+    std::cout << "[6] - Вернуться в главное меню" << std::endl;
 }
 
 void konsole4(){
@@ -47,4 +47,10 @@ int check_input(){
         std::cout << "Вы ввели не число!" << std::endl;
     }
     return a;
+}
+
+void head(){
+    std::cout << "Welcome to AirCraft game!" << std:: endl;
+    std::cout << "-------------------------" << std:: endl;
+    std::cout << "Управление осуществляется с помощью клавиатуры. Выберите подходящий пункт!" << std:: endl;
 }

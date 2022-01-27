@@ -17,19 +17,21 @@ int start(){
         }
         switch (a){
             case 1:{
-                std::cout << "Вы выбрали пункт [1] - Магазин" << std:: endl;
-                air::Shop shop;
-                int b;
-                b = shop.get_balance();
-                std::cout << "Ваш баланс составляет: " << b <<" монет" << std::endl;
-                std::cout << "Выберете подходящий пункт:" << std::endl;
-                konsole3();
-                konsole4();
-                int error;
-                while(true){
-                    error = start2();
-                    if (error > 0 || error < 999) break;
-                }
+                int submenu = 0;
+                do{
+                    std::cout << "Вы выбрали пункт [1] - Магазин" << std:: endl;
+                    air::Shop shop;
+                    int b;
+                    b = shop.get_balance();
+                    std::cout << "Ваш баланс составляет: " << b <<" монет" << std::endl;
+                    submenu = start2();
+                    if (submenu == 1){
+                        std::cout << "Возврат в главное меню..." << std:: endl;
+                        head();
+                        konsole();
+                        return 1;
+                    }
+                } while (true);
                 break;
             }
             case 2:{
@@ -47,9 +49,9 @@ int start(){
             case 5:{
                 std::cout << "Вы выбрали пункт [5] - Назад" << std:: endl;
                 konsole();
-                return 5;
+                return 1;
             }
         }
     }
-    return 999;
+    return 0;
 }
