@@ -162,9 +162,10 @@ namespace air
 	class Shop{
 	private:
 	    int balance;
+	    int level;
 	public:
-	    explicit Shop(): balance(1000){};
-	    explicit Shop(int b): balance(b){};
+	    explicit Shop(): balance(1000), level (1){};
+	    explicit Shop(int b, int lev): balance(b), level(lev){};
 	    int get_balance(){ return balance;}
 	    void set_balance(int arg){ balance = arg;}
 	};

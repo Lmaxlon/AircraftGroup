@@ -4,6 +4,8 @@
 #include "dialog.h"
 #include "aircraft.h"
 #include "things.h"
+#include "levels.cpp"
+
 int start(){
     int a;
     bool While=true;
@@ -36,15 +38,21 @@ int start(){
             }
             case 2:{
                 std::cout << "Вы выбрали пункт [2] - Уровень 1" << std:: endl;
-                break;
+                int i;
+                i = level1();
+                return i;
             }
             case 3:{
                 std::cout << "Вы выбрали пункт [3] - Уровень 2" << std:: endl;
-                break;
+                int j;
+                j = level2();
+                return j;
             }
             case 4:{
                 std::cout << "Вы выбрали пункт [4] - Уровень 3" << std:: endl;
-                break;
+                int k;
+                k = level3();
+                return k;
             }
             case 5:{
                 std::cout << "Вы выбрали пункт [5] - Назад" << std:: endl;

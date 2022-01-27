@@ -25,6 +25,7 @@ int menu(){
 	                    int submenu = 0;
 	                    do{
 	                    submenu = start();
+	                    if (submenu == 2 || submenu == 3 || submenu == 4) return 999;
 	                    } while (submenu != 1);
 	                break;
 	          }
