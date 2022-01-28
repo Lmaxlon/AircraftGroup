@@ -2,7 +2,7 @@
 
 #pragma once
 #include "dialog.h"
-#include "aircraft.h"
+#include "aircraft.cpp"
 #include "things.h"
 #include "levels.cpp"
 
@@ -33,7 +33,24 @@ int start(){
                         konsole();
                         return 1;
                     }
-                    //if (submenu == 11)
+                    if (submenu == 11){ //[1] - Корабль Black типа Carrier
+
+                    }
+                    if (submenu == 12){ //[2] - Корабль White, типа Carrier
+
+                    }
+                    if (submenu == 14){//[1] - Самолет Adam Aircraft
+
+                    }
+                    if (submenu == 15){//[2] - Самолет Airspeed 200
+
+                    }
+                        //здесь добавить выход? - видимо нет, остается в магазине на месте
+                        /*
+                        std::cout << "Возврат в главное меню..." << std:: endl;
+                        head();
+                        konsole();
+                        return 1; */
                 } while (true);
                 break;
             }

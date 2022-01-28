@@ -20,9 +20,9 @@ int start2(){
             case 1:{
                 std::cout << "Вы выбрали пункт [1] - Покупка самолетов" << std:: endl;
                 int air = airplane();
-                if (air == 1){
+                if (air == 1){ //[1] - Самолет Adam Aircraft
                     return 14;
-                } else if (air == 2){
+                } else if (air == 2){ //[2] - Самолет Airspeed 200
                     return 15;
                 } else if (air == 3){
                     return 16;
@@ -33,8 +33,8 @@ int start2(){
                 std::cout << "Вы выбрали пункт [2] - Покупка кораблей" << std:: endl;
                 int ship = shipper();
                 if (ship == 1){
-                    return 11;
-                } else if (ship == 2){
+                    return 11; //[1] - Корабль Black типа Carrier
+                } else if (ship == 2){//[2] - Корабль White, типа Carrier
                     return 12;
                 } else if (ship == 3){
                     return 13;
