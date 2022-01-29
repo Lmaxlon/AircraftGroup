@@ -73,6 +73,8 @@ namespace air
 		//~Ship();
 
 		virtual std::string get_type() {return type;}
+		virtual int get_id(){return id;}
+		//virtual void get чето там
 	protected:
 		std::string name;
 		Person captain;
@@ -92,7 +94,6 @@ namespace air
 	public:
 		explicit Cruiser():Ship() {};
 		explicit Cruiser(air::Weapon w, int _health, int _speed, int _cost):Ship(w, _health, _speed, _cost) { type = "Cruiser";};
-		
 	};
 
 
@@ -148,15 +149,15 @@ namespace air
 	public:
 	    //new_vector<Ship*> v;//корабли
 	    std::vector<Ship*> v;
-	    ~Main()
+	    /*~Main()
 	    {
 	        for (int i(0); i<v.size(); i++)
 	            delete[] v[i];
 	        v.clear();
-	    }
+	    }*/
 		Main& add(std::string type, int _health, int _speed, int _cost, air::Weapon w);
 		friend const std::ostream& operator<< (std::ostream &out, const Main &t);
-		//Main& remove
+		Main& remove(int arg);
 	};
 
 	class Shop{

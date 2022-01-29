@@ -33,6 +33,9 @@ int start2(){
                 std::cout << "Вы выбрали пункт [2] - Покупка кораблей" << std:: endl;
                 int ship = shipper();
                 if (ship == 1){
+                    air::Main main;
+                    air::Weapon w("No",1,1);
+                    main.add("Carrier", 200, 150, 200, w);
                     return 11; //[1] - Корабль Black типа Carrier
                 } else if (ship == 2){//[2] - Корабль White, типа Carrier
                     return 12;

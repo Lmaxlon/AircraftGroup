@@ -34,6 +34,7 @@ int start(){
                         return 1;
                     }
                     if (submenu == 11){ //[1] - Корабль Black типа Carrier
+                        //Main main;
 
                     }
                     if (submenu == 12){ //[2] - Корабль White, типа Carrier
