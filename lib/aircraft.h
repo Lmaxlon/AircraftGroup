@@ -144,20 +144,21 @@ namespace air
 	};
 
 
-	class Main
+	class Table
 	{
 	public:
 	    //new_vector<Ship*> v;//корабли
 	    std::vector<Ship*> v;
-	    /*~Main()
+	    /*~Table()
 	    {
 	        for (int i(0); i<v.size(); i++)
 	            delete[] v[i];
 	        v.clear();
 	    }*/
-		Main& add(std::string type, int _health, int _speed, int _cost, air::Weapon w);
-		friend const std::ostream& operator<< (std::ostream &out, const Main &t);
-		Main& remove(int arg);
+		Table& add(std::string type, int _health, int _speed, int _cost, air::Weapon w);
+		friend const std::ostream& operator<< (std::ostream &out, const Table &t);
+		Table& remove(int arg);
+		Ship &find(int arg);
 	};
 
 	class Shop{
