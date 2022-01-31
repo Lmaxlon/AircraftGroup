@@ -14,7 +14,7 @@ namespace air
 	class Weapon
 	{
 	private:
-		std::string type; //по самоетам || по кораблю
+		std::string type; //по самолетам || по кораблю
 		int damage;
 		int recharge;
 		int size;
@@ -81,6 +81,7 @@ namespace air
 		Motion move;
 		Weapon weapon;
 
+		int size;
 		int cost;
 		int speed;
 		int health;
@@ -99,13 +100,15 @@ namespace air
 
 	class Plane
 	{
-	protected:
-
 	public:
-		Plane();
+		explicit Plane(int _health, int _damage, int _cost, int _speed_of_recharge): health(_health), damage(_damage), cost(_cost), speed_of_recharge(_speed_of_recharge){};
+	    int get_id(int arg){return id;}
+	    const int get_damage(){return damage;};
+	    const int get_health(){return health;}
+	    const int get_cost(){return cost;}
+	    const int get_speed_of_recharge(){return speed_of_recharge;}
 	private:
 	    Motion move;
-	    Weapon w;
 	    int damage;
 	    std::string type;
 	    int health;
@@ -118,8 +121,8 @@ namespace air
 	{
 	protected:
 	    //new_vector<Plane*> deck;//самолеты
-	    std::vector<Plane*> deck;
 	public:
+	    std::vector<Plane*> deck;
 	    ~Carrier()
 	    {
 	        for (int i(0); i<deck.size(); i++)
@@ -128,6 +131,7 @@ namespace air
 	    }
 		explicit Carrier():Ship() {};
 		explicit Carrier(int _health, int _speed, int _cost):Ship(_health, _speed, _cost) { type = "Carrier";};
+		Carrier &add_plane(Plane arg);
 	};
 
 	class CarrierCruiser: public Carrier, Cruiser{
@@ -155,9 +159,9 @@ namespace air
 	            delete[] v[i];
 	        v.clear();
 	    }*/
-		Table& add(std::string type, int _health, int _speed, int _cost, air::Weapon w);
+		Table &add(std::string type, int _health, int _speed, int _cost, air::Weapon w);
 		friend const std::ostream& operator<< (std::ostream &out, const Table &t);
-		Table& remove(int arg);
+		Table &remove(int arg);
 		Ship &find(int arg);
 	};
 
