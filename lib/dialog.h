@@ -28,13 +28,6 @@ void konsole3(){
     std::cout << "[6] - Вернуться в главное меню" << std::endl;
 }
 
-void konsole4(){
-    std::cout << std::endl;
-    std::cout << "(Примечание: чтобы разблокировать новые вещи в магазине, пройдите " << std::endl;
-    std::cout << "следующий уровень игры. После прохождения всей игры вам будут доступны" << std::endl;
-    std::cout << "все вещи.)" << std::endl;
-}
-
 int check_input(){
     int a;
     std::cin >> a;

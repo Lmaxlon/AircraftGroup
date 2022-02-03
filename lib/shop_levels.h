@@ -6,11 +6,15 @@
 #include "things.h"
 #include "levels.cpp"
 
-int start(){
+int start(air::Shop shop, air::Table main){
     int a;
     bool While=true;
     konsole2();
-    air::Shop shop;
+    static bool once = true;
+    if(once){
+        once = false;
+        shop.set_balance(1000);
+    }
     int b;
     b = shop.get_balance();
     std::cout << "Ваш баланс составляет: " << b <<" монет" << std::endl;
@@ -26,7 +30,7 @@ int start(){
                 int submenu = 0;
                 do{
                     std::cout << "Вы выбрали пункт [1] - Магазин" << std:: endl;
-                    submenu = start2();
+                    submenu = start2(main);
                     if (submenu == 1 || submenu == 13 || submenu == 16){
                         std::cout << "Возврат в главное меню..." << std:: endl;
                         head();
@@ -34,11 +38,16 @@ int start(){
                         return 1;
                     }
                     if (submenu == 11){ //[1] - Корабль Black типа Carrier
-                        //Main main;
-
+                        int b = shop.get_balance();
+                        b = b - 500;
+                        shop.set_balance(b);
+                        std::cout << "Ваш новый баланс: " << b << std::endl;
                     }
                     if (submenu == 12){ //[2] - Корабль White, типа Carrier
-
+                        int b = shop.get_balance();
+                        b = b - 500;
+                        shop.set_balance(b);
+                        std::cout << "Ваш новый баланс: " << b << std::endl;
                     }
                     if (submenu == 14){//[1] - Самолет Adam Aircraft
 
@@ -58,19 +67,19 @@ int start(){
             case 2:{
                 std::cout << "Вы выбрали пункт [2] - Уровень 1" << std:: endl;
                 int i;
-                i = level1();
+                i = level1(main);
                 return i;
             }
             case 3:{
                 std::cout << "Вы выбрали пункт [3] - Уровень 2" << std:: endl;
                 int j;
-                j = level2();
+                j = level2(main);
                 return j;
             }
             case 4:{
                 std::cout << "Вы выбрали пункт [4] - Уровень 3" << std:: endl;
                 int k;
-                k = level3();
+                k = level3(main);
                 return k;
             }
             case 5:{

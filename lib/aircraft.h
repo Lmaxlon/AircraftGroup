@@ -68,12 +68,16 @@ namespace air
 	{
 	public:
 		explicit Ship() {};
-		explicit Ship(air::Weapon w, int _health, int _speed, int _cost): weapon(w), health(_health), speed(_speed), cost(_cost) {};
-		explicit Ship(int _health, int _speed, int _cost): health(_health), speed(_speed), cost(_cost) {};
+		explicit Ship(air::Weapon w, int _health, int _speed, int _cost, int _id): weapon(w), health(_health), speed(_speed), cost(_cost), id(_id) {};
+		explicit Ship(int _health, int _speed, int _cost, int _id): health(_health), speed(_speed), cost(_cost), id(_id) {};
 		//~Ship();
 
 		virtual std::string get_type() {return type;}
 		virtual int get_id(){return id;}
+		virtual int get_health(){return health;}
+		virtual int get_speed(){return speed;}
+		virtual int get_cost(){return cost;}
+		virtual void set_id(int arg){id = arg;}
 		//virtual void get чето там
 	protected:
 		std::string name;
@@ -94,19 +98,20 @@ namespace air
 	{
 	public:
 		explicit Cruiser():Ship() {};
-		explicit Cruiser(air::Weapon w, int _health, int _speed, int _cost):Ship(w, _health, _speed, _cost) { type = "Cruiser";};
+		explicit Cruiser(air::Weapon w, int _health, int _speed, int _cost, int _id):Ship(w, _health, _speed, _cost, _id) { type = "Cruiser";};
 	};
 
 
 	class Plane
 	{
 	public:
-		explicit Plane(int _health, int _damage, int _cost, int _speed_of_recharge): health(_health), damage(_damage), cost(_cost), speed_of_recharge(_speed_of_recharge){};
-	    int get_id(int arg){return id;}
+		explicit Plane(int _health, int _damage, int _cost, int _speed_of_recharge, int _id): health(_health), damage(_damage), cost(_cost), speed_of_recharge(_speed_of_recharge), id(_id){};
+	    const int get_id(){return id;}
 	    const int get_damage(){return damage;};
 	    const int get_health(){return health;}
 	    const int get_cost(){return cost;}
 	    const int get_speed_of_recharge(){return speed_of_recharge;}
+	    void set_id(int arg){id = arg;}
 	private:
 	    Motion move;
 	    int damage;
@@ -130,14 +135,15 @@ namespace air
 	        deck.clear();
 	    }
 		explicit Carrier():Ship() {};
-		explicit Carrier(int _health, int _speed, int _cost):Ship(_health, _speed, _cost) { type = "Carrier";};
+		explicit Carrier(int _health, int _speed, int _cost, int _id):Ship(_health, _speed, _cost, _id) { type = "Carrier";};
 		Carrier &add_plane(Plane arg);
+		Carrier &kick(int arg);
 	};
 
 	class CarrierCruiser: public Carrier, Cruiser{
 	public:
 	    explicit CarrierCruiser():Cruiser(),Carrier(){};
-	    explicit CarrierCruiser(air::Weapon w, int _health, int _speed, int _cost):Cruiser(w, _health, _speed, _cost), Carrier(_health, _speed, _cost){ type = "CarrierCruiser";}
+	    explicit CarrierCruiser(air::Weapon w, int _health, int _speed, int _cost, int _id):Cruiser(w, _health, _speed, _cost, _id), Carrier(_health, _speed, _cost, _id){ type = "CarrierCruiser";}
 	    //new_vector<Plane*> deck;
 	    ~CarrierCruiser()
 	    {
@@ -159,24 +165,19 @@ namespace air
 	            delete[] v[i];
 	        v.clear();
 	    }*/
-		Table &add(std::string type, int _health, int _speed, int _cost, air::Weapon w);
+		Table &add(std::string type, int _health, int _speed, int _cost, air::Weapon w, int _id);
 		friend const std::ostream& operator<< (std::ostream &out, const Table &t);
 		Table &remove(int arg);
-		Ship &find(int arg);
+		Ship &find();
 	};
 
 	class Shop{
 	private:
 	    int balance;
-	    int level;
 	public:
-	    explicit Shop(): balance(1000), level (){};
-	    explicit Shop(int b, int lev): balance(b), level(lev){};
+	    explicit Shop(): balance(){};
+	    explicit Shop(int b): balance(b){};
 	    int get_balance(){ return balance;}
-	    int get_level(){ return level; }
 	    void set_balance(int arg){ balance = arg;}
-	    void set_level(int arg){
-	        level = level + arg;
-	    }
 	};
 }

@@ -3,10 +3,9 @@
 #pragma once
 #include "dialog.h"
 #include "aircraft.cpp"
-int start2(){
+int start2(air::Table main){
     std::cout << "Выберете подходящий пункт:" << std::endl;
     konsole3();
-    konsole4();
     int a;
     bool While=true;
     while (While){
@@ -33,12 +32,14 @@ int start2(){
                 std::cout << "Вы выбрали пункт [2] - Покупка кораблей" << std:: endl;
                 int ship = shipper();
                 if (ship == 1){
-                    air::Table main;
-                    air::Weapon w("No",1,1);
-                    main.add("Carrier", 200, 150, 200, w);
-                    //int id =
+                    air::Weapon w("Black",40,70);
+                    main.add("Carrier", 500, 3, 500, w, 1);
+                    std::cout << main;
                     return 11; //[1] - Корабль Black типа Carrier
                 } else if (ship == 2){//[2] - Корабль White, типа Carrier
+                    air::Weapon w("White",70,65);
+                    main.add("Carrier", 600, 5, 500, w, 2);
+                    std::cout << main;
                     return 12;
                 } else if (ship == 3){
                     return 13;
