@@ -55,13 +55,72 @@ namespace air
 		std::string get_level() {return level;}
 		void set_level(std::string arg){ level = arg;}
 	};
-
-
+	class Map{
+	    int** inner_array;
+	    int size_x;
+	    int size_y;
+	    void init()
+	    {
+	        inner_array = new int*[size_y];
+	        for (int i = 0; i < size_y; i++)
+	        {
+	            inner_array[i] = new int[size_x];
+	        }
+	    }
+	    void zero(){
+	        for (int i = 0; i < size_y; i++)
+	        {
+	            for (int j = 0; j < size_x; j++)
+	            {
+	                inner_array[i][j] = 0;
+	            }
+	        }
+	    }
+	    public:
+	    void fill(int _arg1, int _arg2)
+	    {
+	        for (int i = 0; i < size_y; i++)
+	        {
+	            for (int j = 0; j < size_x; j++)
+	            {
+	                if(inner_array[i][j] != 1 || inner_array[i][j] != 2){
+	                    if (i == _arg1 && j == _arg2) inner_array[i][j] = 1;
+	                }
+	            }
+	        }
+	    }
+	    Map(int x, int y){
+	        size_x = x;
+	        size_y = y;
+	        init();
+	        zero();
+	    };
+        ~Map(){
+	        for (int i = 0; i < size_y; i++)
+	        {
+	            delete[] inner_array[i];
+	        }
+	        delete[] inner_array;
+        }
+        void print()
+	    {
+	        for (int i = 0; i < size_y; i++)
+	        {
+	            for (int j = 0; j < size_x; j++) {
+	                if (inner_array[i][j] == 0) std::cout << "-  ";
+	                if (inner_array[i][j] == 1) std::cout << "c  ";
+	                if (inner_array[i][j] == 2) std::cout << "C  ";
+	            }
+	            std::cout << std::endl;
+	        }
+	    }
+	};
 	class Motion
 	{
 	public:
 		int x;
 		int y;
+		bool busy = 1;
 		Motion(): x(), y(){
 		    x = GetRandomNumber(0, 14);
 		    y = GetRandomNumber(7, 13);
@@ -74,12 +133,6 @@ namespace air
 		//формуала для направления движения
 		//формула модуля
 
-	};
-
-	class Map{
-	public:
-	    int x;
-	    int y;
 	};
 	class Ship
 	{

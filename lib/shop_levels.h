@@ -98,15 +98,11 @@ int start(){
                 std::cout << "Координаты кораблей:" << std::endl;
                 std::cout << "ID:1, "<< "("<< x <<", "<< y <<")" <<std::endl;
                 std::cout << "ID:2, "<< "("<< x1 <<", "<< y1 <<")" <<std::endl;
-                for (int i = 0; i < 14; i++){
-                    for(int j = 0; j < 14; j++){
-                        if ((i == x && j == y) || (i == x1 && j == y1)){
-                            std::cout <<"c  ";
-                        } else std::cout <<"-  ";
-                    }
-                    std::cout << std::endl;
-                }
                 std::cout << "Что будем делать?" << std::endl;
+                air::Map map(14, 14);
+                map.fill(x, y);
+                map.fill(x1, y1);
+                map.print();
                 a = 0;
                 break;
             }
