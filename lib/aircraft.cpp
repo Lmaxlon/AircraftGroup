@@ -27,6 +27,16 @@ namespace air
 	    }
 	    return *this;
 	}
+	Ship& Table::find(int arg)
+    	{
+    		for (int i = 0; i < v.size(); ++i)
+    		{
+    			if (v[i]->get_id() == arg)
+    			{
+    				return *v[i];
+    			}
+    		}
+    	}
 	Table &Table::add(std::string type, int _health, int _speed, int _cost, Weapon w, int _id)//добавление кораблей
     	{
     		if (type == "Cruiser") v.push_back(new air::Cruiser(w, _health, _speed, _cost, _id));

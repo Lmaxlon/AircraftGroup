@@ -62,13 +62,15 @@ namespace air
 	public:
 		int x;
 		int y;
-		Motion(): x(0), y(0){};
-		Motion(int _x, int _y): x(_x), y(_y){
+		Motion(): x(), y(){
 		    x = GetRandomNumber(0, 14);
 		    y = GetRandomNumber(0, 14);
 		};
+		Motion(int _x, int _y): x(_x), y(_y){};
 		void set_x(int arg){ x = arg;}
 		void set_y(int arg){ y = arg;}
+		int get_x(){ return x;}
+		int get_y(){ return y;}
 		//формуала для направления движения
 		//формула модуля
 
@@ -77,6 +79,7 @@ namespace air
 	class Ship
 	{
 	public:
+	    Motion move;
 		explicit Ship() {};
 		explicit Ship(air::Weapon w, int _health, int _speed, int _cost, int _id): weapon(w), health(_health), speed(_speed), cost(_cost), id(_id) {};
 		explicit Ship(int _health, int _speed, int _cost, int _id): health(_health), speed(_speed), cost(_cost), id(_id) {};
@@ -92,7 +95,6 @@ namespace air
 	protected:
 		std::string name;
 		//Person captain;
-		Motion move;
 		Weapon weapon;
 
 		int size;
@@ -179,6 +181,7 @@ namespace air
 		Table &add(std::string type, int _health, int _speed, int _cost, air::Weapon w, int _id);
 		friend const std::ostream& operator<< (std::ostream &out, const Table &t);
 		Table &remove(int arg);
+		Ship &find(int arg);
 	};
 
 	class Shop{

@@ -86,14 +86,20 @@ int start(){
                 //i = level1(main);
                 std::cout << "Уровень 1" << std::endl;
                 std::cout << "------------------------" << std:: endl;
-                std::cout << "Информация о приобритенных судах:" << std:: endl;
+                std::cout << "Информация о приобретенных судах:" << std:: endl;
                 /*for (unsigned int i = 0; i < main.v.size(); i++) {
                     std::cout << "health: " << main.v[i]->get_health() << std::endl;
                 }*/
                 std::cout << main;
+                int x = main.find(1).move.get_x();
+                int y = main.find(1).move.get_y();
+                std::cout << "Координаты корабля" << std::endl;
+                std::cout << "("<< x <<", "<< y <<")" <<std::endl;
                 for (int i = 0; i < 14; i++){
                     for(int j = 0; j < 14; j++){
-                        std::cout <<"-  ";
+                        if (i == x && j == y){
+                            std::cout <<"c  ";
+                        } else std::cout <<"-  ";
                     }
                     std::cout << std::endl;
                 }
