@@ -102,7 +102,42 @@ int start(){
                 air::Map map(14, 14);
                 map.fill(x, y);
                 map.fill(x1, y1);
-                map.print();
+                while( a != 666){
+                    map.print();
+                    info();
+                    get(a);
+                    switch(a){
+                        case 1:{
+                            std::cout << "Вы выбрали пункт [1] - Подвинуть корабль" << std:: endl;
+                            std::cout << "Что вы хотите подвинуть (Введите id корабля)?" << std::endl;
+                            int iden;
+                            get(iden);
+                            std::cout << "Вы хотите подвинуть: " << iden << std::endl;
+                            int i = main.find(iden).move.get_x();
+                            int j = main.find(iden).move.get_y();
+                            std::cout << "Координаты этого корабля: " << std::endl;
+                            std::cout << "ID: "<< iden << "("<< i <<", "<< j <<")" <<std::endl;
+                            a = 0;
+                            break;
+                        }
+                        case 2:{
+                            std::cout << "Вы выбрали пункт [2] - Атаковать" << std:: endl;
+                            a = 0;
+                            break;
+                        }
+                        case 3:{
+                            std::cout << "Вы выбрали пункт [3] - Выпустить доступные самолеты" << std:: endl;
+                            a = 0;
+                            break;
+                        }
+                        case 4:{
+                            std::cout << "Вы выбрали пункт [4] - Узнать статус флотилии" << std:: endl;
+                            std::cout << main;
+                            a = 0;
+                            break;
+                        }
+                    }
+                }
                 a = 0;
                 break;
             }

@@ -113,3 +113,9 @@ int shipper(){
     if (a == 2) return 2;
     if (a == 3) return 3;
 }
+void info(){
+    std::cout << "[1] - Подвинуть корабль" << std:: endl;
+    std::cout << "[2] - Атаковать (Возможно только вблизи!" << std:: endl;
+    std::cout << "[3] - Выпустить доступные самолеты" << std:: endl;
+    std::cout << "[4] - Узнать статус флотилии" << std:: endl;
+}
