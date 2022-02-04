@@ -7,6 +7,7 @@
 #include "levels.cpp"
 
 int start(){
+    air::Map map(14, 14);
     air::Shop shop;
     air::Table main;
     int a;
@@ -91,19 +92,23 @@ int start(){
                     std::cout << "health: " << main.v[i]->get_health() << std::endl;
                 }*/
                 std::cout << main;
-                int x = main.find(1).move.get_x();
-                int y = main.find(1).move.get_y();
-                int x1 = main.find(2).move.get_x();
-                int y1 = main.find(2).move.get_y();
+                int x = 3;
+                int y = 5;
+                int x1 = 7;
+                int y1= 9;
+                main.find(1).move.set_x(x);
+                main.find(1).move.set_y(y);
+                main.find(2).move.set_x(x1);
+                main.find(2).move.set_y(y1);
+
                 std::cout << "Координаты кораблей:" << std::endl;
                 std::cout << "ID:1, "<< "("<< x <<", "<< y <<")" <<std::endl;
                 std::cout << "ID:2, "<< "("<< x1 <<", "<< y1 <<")" <<std::endl;
                 std::cout << "Что будем делать?" << std::endl;
-                air::Map map(14, 14);
-                map.fill(x, y);
-                map.fill(x1, y1);
+                map.fill(main.find(1).move.get_x(), main.find(1).move.get_y());
+                map.fill(main.find(2).move.get_x(), main.find(2).move.get_y());
+                map.print();
                 while( a != 666){
-                    map.print();
                     info();
                     get(a);
                     switch(a){
@@ -117,29 +122,70 @@ int start(){
                             int j = main.find(iden).move.get_y();
                             std::cout << "Координаты этого корабля: " << std::endl;
                             std::cout << "ID: "<< iden << "("<< i <<", "<< j <<")" <<std::endl;
+                            std::cout << "Куда вы хотите подвинуть?" << iden << std::endl;
+                            info2();
+                            get(a);
+                            switch(a){
+                                case 1: {//вверх
+                                    map.clear(i, j);
+                                    i = i - 1;
+                                    main.find(iden).move.set_x(i);
+                                    main.find(iden).move.set_y(j);
+                                    map.fill(main.find(iden).move.get_x(), main.find(iden).move.get_y());
+                                    map.print();
+                                    break;
+                                }
+                                case 2: {//вниз
+                                    map.clear(i, j);
+                                    i = i + 1;
+                                    main.find(iden).move.set_x(i);
+                                    main.find(iden).move.set_y(j);
+                                    map.fill(main.find(iden).move.get_x(), main.find(iden).move.get_y());
+                                    map.print();
+                                    break;
+                                }
+                                case 3: {//влево
+                                    map.clear(i, j);
+                                    i = j - 1;
+                                    main.find(iden).move.set_x(i);
+                                    main.find(iden).move.set_y(j);
+                                    map.fill(main.find(iden).move.get_x(), main.find(iden).move.get_y());
+                                    map.print();
+                                    break;
+                                }
+                                case 4:{//вправо
+                                    map.clear(i, j);
+                                    j = j + 1;
+                                    main.find(iden).move.set_x(i);
+                                    main.find(iden).move.set_y(j);
+                                    map.fill(main.find(iden).move.get_x(), main.find(iden).move.get_y());
+                                    map.print();
+                                    break;
+                                }
+                            }
                             a = 0;
                             break;
                         }
                         case 2:{
                             std::cout << "Вы выбрали пункт [2] - Атаковать" << std:: endl;
-                            a = 0;
                             break;
                         }
                         case 3:{
                             std::cout << "Вы выбрали пункт [3] - Выпустить доступные самолеты" << std:: endl;
-                            a = 0;
                             break;
                         }
                         case 4:{
                             std::cout << "Вы выбрали пункт [4] - Узнать статус флотилии" << std:: endl;
                             std::cout << main;
-                            a = 0;
+                            break;
+                        }
+                        case 5:{
+                            std::cout << "Вы выбрали пункт [5] - Выход из игры" << std:: endl;
+                            a = 666;
                             break;
                         }
                     }
                 }
-                a = 0;
-                break;
             }
             case 3:{
                 std::cout << "Вы выбрали пункт [3] - Уровень 2" << std:: endl;

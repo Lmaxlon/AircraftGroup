@@ -67,6 +67,7 @@ namespace air
 	            inner_array[i] = new int[size_x];
 	        }
 	    }
+	    public:
 	    void zero(){
 	        for (int i = 0; i < size_y; i++)
 	        {
@@ -76,7 +77,6 @@ namespace air
 	            }
 	        }
 	    }
-	    public:
 	    void fill(int _arg1, int _arg2)
 	    {
 	        for (int i = 0; i < size_y; i++)
@@ -84,8 +84,17 @@ namespace air
 	            for (int j = 0; j < size_x; j++)
 	            {
 	                if(inner_array[i][j] != 1 || inner_array[i][j] != 2){
-	                    if (i == _arg1 && j == _arg2) inner_array[i][j] = 1;
+	                    inner_array[_arg1][_arg2] = 1;
 	                }
+	            }
+	        }
+	    }
+	    void clear(int _arg1, int _arg2){
+	        for (int i = 0; i < size_y; i++)
+	        {
+	            for (int j = 0; j < size_x; j++)
+	            {
+	                inner_array[_arg1][_arg2] = 0;
 	            }
 	        }
 	    }
@@ -121,10 +130,7 @@ namespace air
 		int x;
 		int y;
 		bool busy = 1;
-		Motion(): x(), y(){
-		    x = GetRandomNumber(0, 14);
-		    y = GetRandomNumber(7, 13);
-		};
+		Motion(): x(), y(){};
 		Motion(int _x, int _y): x(_x), y(_y){};
 		void set_x(int arg){ x = arg;}
 		void set_y(int arg){ y = arg;}

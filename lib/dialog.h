@@ -119,3 +119,10 @@ void info(){
     std::cout << "[3] - Выпустить доступные самолеты" << std:: endl;
     std::cout << "[4] - Узнать статус флотилии" << std:: endl;
 }
+void info2(){
+    std::cout << "[1] - Вверх" << std:: endl;
+    std::cout << "[2] - Вниз" << std:: endl;
+    std::cout << "[3] - Влево" << std:: endl;
+    std::cout << "[4] - Вправо" << std:: endl;
+    std::cout << "[5] - Выход из игры" << std::endl;
+}
