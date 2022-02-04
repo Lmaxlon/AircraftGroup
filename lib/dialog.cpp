@@ -5,8 +5,6 @@
 #include "shop_levels.h"
 
 int menu(){
-     air::Shop shop;
-     air::Table main;
     /*air::Main main;
 	air::Weapon w("No",1,1);
 	main.add("Carrier", 1,1,1, w);*/
@@ -26,7 +24,7 @@ int menu(){
 	                std::cout << "Вы выбрали пункт [1] - игра начинается!" << std:: endl;
 	                    int submenu = 0;
 	                    do{
-	                    submenu = start(shop, main);
+	                    submenu = start();
 	                    if (submenu == 2 || submenu == 3 || submenu == 4) return 999;
 	                    } while (submenu != 1);
 	                break;

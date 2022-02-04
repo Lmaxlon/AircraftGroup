@@ -16,6 +16,8 @@ namespace air
 			out << std::endl;
 			out <<"Скорость судна: "<< t.v[i]->get_speed();
 			out << std::endl;
+			out << "--------------------------------------";
+			out << std::endl;
 		}
 		return out;
 	}
@@ -24,11 +26,6 @@ namespace air
 	         if (v[i]->get_id() == arg) v.erase(v.begin() + i);
 	    }
 	    return *this;
-	}
-	Ship &Table::find(){//поиск кораблей по айди
-	     for (int i = 0; i < v.size(); ++i){
-	              return *v[i];
-	    }
 	}
 	Table &Table::add(std::string type, int _health, int _speed, int _cost, Weapon w, int _id)//добавление кораблей
     	{

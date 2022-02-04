@@ -37,8 +37,8 @@ int start2(air::Table main){
                     std::cout << main;
                     return 11; //[1] - Корабль Black типа Carrier
                 } else if (ship == 2){//[2] - Корабль White, типа Carrier
-                    air::Weapon w("White",70,65);
-                    main.add("Carrier", 600, 5, 500, w, 2);
+                    air::Weapon we("White",70,65);
+                    main.add("Carrier", 600, 5, 500, we, 2);
                     std::cout << main;
                     return 12;
                 } else if (ship == 3){

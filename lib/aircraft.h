@@ -11,13 +11,24 @@
 
 namespace air
 {
+    int GetRandomNumber(int min, int max)
+    {
+        // Установить генератор случайных чисел
+        srand(time(NULL));
+
+        // Получить случайное число - формула
+        int num = min + rand() % (max - min + 1);
+
+        return num;
+    }
+
 	class Weapon
 	{
 	private:
 		std::string type; //по самолетам || по кораблю
 		int damage;
 		int recharge;
-		int size;
+		//int size;
 	public:
 		explicit Weapon(): type("NO"), damage(0), recharge(0) {};
 		explicit Weapon(std::string t, int d, int r): type(t), damage(d), recharge(r){};
@@ -49,14 +60,13 @@ namespace air
 	class Motion
 	{
 	public:
-		int x0;
-		int y0;
 		int x;
 		int y;
-		Motion(): x(0), y(0), x0(0), y0(0) {};
-		Motion(int _x, int _y, int _x0, int _y0): x(_x), y(_y), x0(_x0), y0(_x0) {};
-		void set_x0(int arg){ x0 = arg;}
-		void set_y0(int arg){ y0 = arg;}
+		Motion(): x(0), y(0){};
+		Motion(int _x, int _y): x(_x), y(_y){
+		    x = GetRandomNumber(0, 14);
+		    y = GetRandomNumber(0, 14);
+		};
 		void set_x(int arg){ x = arg;}
 		void set_y(int arg){ y = arg;}
 		//формуала для направления движения
@@ -81,7 +91,7 @@ namespace air
 		//virtual void get чето там
 	protected:
 		std::string name;
-		Person captain;
+		//Person captain;
 		Motion move;
 		Weapon weapon;
 
@@ -164,11 +174,11 @@ namespace air
 	        for (int i(0); i<v.size(); i++)
 	            delete[] v[i];
 	        v.clear();
+	        v.shrink_to_fit();
 	    }*/
 		Table &add(std::string type, int _health, int _speed, int _cost, air::Weapon w, int _id);
 		friend const std::ostream& operator<< (std::ostream &out, const Table &t);
 		Table &remove(int arg);
-		Ship &find();
 	};
 
 	class Shop{
