@@ -64,7 +64,7 @@ namespace air
 		int y;
 		Motion(): x(), y(){
 		    x = GetRandomNumber(0, 14);
-		    y = GetRandomNumber(0, 14);
+		    y = GetRandomNumber(7, 13);
 		};
 		Motion(int _x, int _y): x(_x), y(_y){};
 		void set_x(int arg){ x = arg;}
@@ -76,6 +76,11 @@ namespace air
 
 	};
 
+	class Map{
+	public:
+	    int x;
+	    int y;
+	};
 	class Ship
 	{
 	public:

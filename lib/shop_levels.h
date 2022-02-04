@@ -93,16 +93,20 @@ int start(){
                 std::cout << main;
                 int x = main.find(1).move.get_x();
                 int y = main.find(1).move.get_y();
-                std::cout << "Координаты корабля" << std::endl;
-                std::cout << "("<< x <<", "<< y <<")" <<std::endl;
+                int x1 = main.find(2).move.get_x();
+                int y1 = main.find(2).move.get_y();
+                std::cout << "Координаты кораблей:" << std::endl;
+                std::cout << "ID:1, "<< "("<< x <<", "<< y <<")" <<std::endl;
+                std::cout << "ID:2, "<< "("<< x1 <<", "<< y1 <<")" <<std::endl;
                 for (int i = 0; i < 14; i++){
                     for(int j = 0; j < 14; j++){
-                        if (i == x && j == y){
+                        if ((i == x && j == y) || (i == x1 && j == y1)){
                             std::cout <<"c  ";
                         } else std::cout <<"-  ";
                     }
                     std::cout << std::endl;
                 }
+                std::cout << "Что будем делать?" << std::endl;
                 a = 0;
                 break;
             }
