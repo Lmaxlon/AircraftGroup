@@ -5,11 +5,14 @@
 #include "aircraft.cpp"
 #include "things.h"
 #include "levels.cpp"
+#include <cmath>
 
 int start(){
     air::Map map(14, 14);
     air::Shop shop;
     air::Table main;
+    int first = 800;
+    int second = 700;
     int a;
     static bool once = true;
     if(once){
@@ -107,6 +110,8 @@ int start(){
                 std::cout << "Что будем делать?" << std::endl;
                 map.fill(main.find(1).move.get_x(), main.find(1).move.get_y());
                 map.fill(main.find(2).move.get_x(), main.find(2).move.get_y());
+                map.fill_vrag(2, 8);
+                map.fill_vrag(1, 6);
                 map.print();
                 while( a != 666){
                     info();
@@ -167,7 +172,32 @@ int start(){
                             break;
                         }
                         case 2:{
+                            map.print();
                             std::cout << "Вы выбрали пункт [2] - Атаковать" << std:: endl;
+                            std::cout << "Введите ID корабля:" << std::endl;
+                            int attack;
+                            get(attack);
+                            std::cout << "Вы выбрали: " << attack << std::endl;
+                            int i1 = main.find(attack).move.get_x();
+                            int j1 = main.find(attack).move.get_y();
+                            std::cout << "Координаты этого корабля: " << std::endl;
+                            std::cout << "ID: "<< attack << "("<< i1 <<", "<< j1 <<")" <<std::endl;
+                            //2 8
+                            //1 6
+                            int delta1 = 2 - i1;
+                            int delta2 = 8 - j1;
+                            int delta3 = 1 - i1;
+                            int delta4 = 6 - j1;
+                            delta1 = abs(delta1);
+                            delta2 = abs(delta2);
+                            delta3 = abs(delta3);
+                            delta4 = abs(delta4);
+                            std::cout << "Расстояние до противника: " << delta1<< delta2 << std::endl;
+                            std::cout << "Расстояние до другого противника: " << delta3<< delta4 << std::endl;
+                            if((delta1 <= 2 && delta2 <= 2) || (delta3 <= 2 && delta4 <= 2)){
+                                first = first - main.find(attack).weapon.get_damage();
+                                second = second - main.find(attack).weapon.get_damage();
+                            } else std::cout << "Подплывите ближе!" << std::endl;
                             break;
                         }
                         case 3:{

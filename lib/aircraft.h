@@ -77,6 +77,15 @@ namespace air
 	            }
 	        }
 	    }
+	    void fill_vrag(int _arg1, int _arg2){
+	        for (int i = 0; i < size_y; i++)
+	        {
+	            for (int j = 0; j < size_x; j++)
+	            {
+	                    inner_array[_arg1][_arg2] = 2;
+	            }
+	        }
+	    }
 	    void fill(int _arg1, int _arg2)
 	    {
 	        for (int i = 0; i < size_y; i++)
@@ -94,7 +103,7 @@ namespace air
 	        {
 	            for (int j = 0; j < size_x; j++)
 	            {
-	                inner_array[_arg1][_arg2] = 0;
+	                if (inner_array[i][j] != 2) inner_array[_arg1][_arg2] = 0;
 	            }
 	        }
 	    }
@@ -144,6 +153,7 @@ namespace air
 	{
 	public:
 	    Motion move;
+	    Weapon weapon;
 		explicit Ship() {};
 		explicit Ship(air::Weapon w, int _health, int _speed, int _cost, int _id): weapon(w), health(_health), speed(_speed), cost(_cost), id(_id) {};
 		explicit Ship(int _health, int _speed, int _cost, int _id): health(_health), speed(_speed), cost(_cost), id(_id) {};
@@ -159,8 +169,6 @@ namespace air
 	protected:
 		std::string name;
 		//Person captain;
-		Weapon weapon;
-
 		int size;
 		int cost;
 		int speed;
